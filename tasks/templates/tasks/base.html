@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Todo{% endblock %}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 10px;
+      }
+      nav {
+        padding-bottom: 10px;
+        border-bottom: 1px solid gray;
+      }
+      .errorlist {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'task_list' %}">Tasks</a>
+    </nav>
+    {% block content %}{% endblock %}
+  </body>
+</html>
