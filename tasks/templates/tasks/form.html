@@ -1,0 +1,15 @@
+
+{% extends "tasks/layout.html" %}
+{% block title %}New task{% endblock %}
+
+{% block content %}
+<h1>New task</h1>
+<form method="post"  action="{% url 'task_create' %}">
+  {% csrf_token %}
+
+  {{ form.as_p}}
+  <button type="submit" >Save</button>
+  <a href="{% url 'task_list' %}">Cancel</a>
+</form>
+
+{% endblock %}
