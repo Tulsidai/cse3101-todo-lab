@@ -9,5 +9,6 @@
 {% else %}
 <p>No description.</p>
 {% endif %}
+<a href="{% url 'task_edit' task.pk %}">Edit</a>
 <a href="{% url 'task_list' %}">Back to the list</a>
 {% endblock %}

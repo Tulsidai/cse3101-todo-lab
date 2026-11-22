@@ -7,10 +7,6 @@ from .models import Todo
 
 # Create your views here.
 @require_GET
-def home(request):
-    return redirect ("task_list")
-
-@require_GET
 def task_list(request):
     tasks = Todo.objects.all()
     return render(request, 'tasks/index.html', { "tasks":tasks })
@@ -35,3 +31,19 @@ def task_create(request):
     form = TodoForm()
 
     return render (request, "tasks/form.html", {'form':form})
+
+
+
+@require_http_methods(["GET", "POST"])
+def task_edit(request, pk):
+    task = get_object_or_404(Todo, pk = pk)
+    if request.method == 'POST':
+        form = TodoForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect ("task_list")
+
+        return render(request, 'tasks/edit.html', {"form": form, 'task': task}, status=400)
+    form = TodoForm(instance = task)
+
+    return render(request, "tasks/edit.html", {'form':form, "task":task})
