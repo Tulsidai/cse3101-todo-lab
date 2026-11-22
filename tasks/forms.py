@@ -2,6 +2,8 @@ from django import forms
 from .models import Todo
 
 
+# Activity 4
+
 class TodoForm(forms.ModelForm):
 
     class Meta:

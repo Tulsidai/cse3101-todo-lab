@@ -6,6 +6,9 @@ from .models import Todo
 
 
 # Create your views here.
+
+# Activity 3
+
 @require_GET
 def task_list(request):
     tasks = Todo.objects.all()
@@ -17,6 +20,8 @@ def task_detail(request, pk):
     task = get_object_or_404(Todo, pk = pk)
     return render(request,"tasks/detail.html", {'task': task})
 
+
+# Activity 4
 
 @require_http_methods(["GET", "POST"])
 def task_create(request):
@@ -34,6 +39,7 @@ def task_create(request):
 
 
 
+# Activity 5
 @require_http_methods(["GET", "POST"])
 def task_edit(request, pk):
     task = get_object_or_404(Todo, pk = pk)
@@ -50,6 +56,7 @@ def task_edit(request, pk):
 
 
 
+# Activity 6
 @require_http_methods(["GET", "POST"])
 def task_delete(request, pk):
     task = get_object_or_404(Todo, pk = pk)
