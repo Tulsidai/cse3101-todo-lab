@@ -47,3 +47,14 @@ def task_edit(request, pk):
     form = TodoForm(instance = task)
 
     return render(request, "tasks/edit.html", {'form':form, "task":task})
+
+
+
+@require_http_methods(["GET", "POST"])
+def task_delete(request, pk):
+    task = get_object_or_404(Todo, pk = pk)
+    if request.method == 'POST':
+        task.delete()
+        return redirect("task_list" )
+
+    return render(request, "tasks/delete.html", {'task':task})
